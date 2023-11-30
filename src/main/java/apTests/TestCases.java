@@ -108,9 +108,10 @@ public class TestCases {
         WebElement appleinc = driver.findElement(By.xpath("(//h3)[2]"));
         appleinc.click();
      
-       WebElement steveJobs = driver.findElement(By.xpath("//div[@id='mw-content-text']//*[contains(text(),'Steve Jobs')]"));
+       WebElement steveJobs = driver.findElement(By.xpath("//a[text()='Steve Jobs']"));
         
        if(steveJobs.isDisplayed()){
+
          System.out.println("Steve jobs is listed as a founder");
        }
        else{
@@ -162,6 +163,7 @@ public class TestCases {
         mainmenu.click();
     
         WebElement aboutWikipedia = driver.findElement(By.xpath("//a[text()='About Wikipedia']"));
+        aboutWikipedia.click();
     
         String currentUrl = driver.getCurrentUrl();
     
