@@ -1,0 +1,17 @@
+
+
+
+{
+  "version": "1.0",
+  "author": "Your Name",
+  "description": "Sample metadata for my application",
+  "settings": {
+    "debug": true,
+    "timeout": 5000
+  }
+}
+
+
+
+
+

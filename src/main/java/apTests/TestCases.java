@@ -45,12 +45,12 @@ public class TestCases {
 
     }
 
-    public void testCase01() {
+    public void TestCase01() throws InterruptedException {
         System.out.println("Start Test Case : TestCase01");
 
         driver.get("https://www.wikipedia.org");
 
-        String currenturl = driver.getCurrentUrl();
+        String currenturl = driver.getTitle();
 
         String expectedurlTitle = "wikipedia";
 
@@ -67,7 +67,7 @@ public class TestCases {
     }
 
 
-    public void testCase02() {
+    public void TestCase02()throws InterruptedException {
 
         System.out.println("Start Test Case : TestCase02");
 
@@ -76,12 +76,12 @@ public class TestCases {
         WebElement headerName = driver.findElement(By.xpath("//h1"));
         String currentHeaderText = headerName.getText();
 
-        String actualHeader = "Wikipedia";
+        //String actualHeader = "Wikipedia";
 
-        if (currentHeaderText.trim().contains(actualHeader)) {
-            System.out.println("Printing Header Name: " + actualHeader);
+        if (currentHeaderText.equals("Wikipedia")) {
+            System.out.println("Printing Header Name Wikipedia");
         } else {
-            System.out.println("Header name is not : " + actualHeader);
+            System.out.println("Header name is not Wikipedia");
         }
 
         String termsOfUseLinkText = driver.findElementByLinkText("Terms of Use").getText();
@@ -99,18 +99,23 @@ public class TestCases {
        }
 
 
-       public void testCase03(){
+       public void TestCase03() throws InterruptedException{
 
         driver.get("https://www.wikipedia.org");
      
-        driver.findElementByName("search").sendKeys("apple");
+        driver.findElementByName("search").sendKeys("apple"); //div[@class='suggestions-dropdown']//a
+
+        Thread.sleep(2000);
      
         WebElement appleinc = driver.findElement(By.xpath("(//h3)[2]"));
         appleinc.click();
      
-       WebElement steveJobs = driver.findElement(By.xpath("//a[text()='Steve Jobs']"));
+        Thread.sleep(2000);
+       WebElement steveJobs = driver.findElement(By.xpath("(//a[text()='Steve Jobs'])[1]"));
         
-       if(steveJobs.isDisplayed()){
+      String text = steveJobs.getText();
+      String expected = "Steve Jobs";
+      if(text.contains(expected)){
 
          System.out.println("Steve jobs is listed as a founder");
        }
@@ -123,7 +128,7 @@ public class TestCases {
      }
 
      
-     public void testCase04(){
+     public void TestCase04() throws InterruptedException{
 
         driver.get("https://www.wikipedia.org");
     
@@ -151,7 +156,7 @@ public class TestCases {
     
 
     
-    public void testCase05(){
+    public void TestCase05() throws InterruptedException{
 
         driver.get("https://en.wikipedia.org/");
     
